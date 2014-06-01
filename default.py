@@ -65,7 +65,7 @@ def listVideos(url):
 
 def playVideo(url):
     content = getUrl(url)
-    match = re.compile("file  : '(.+?)'", re.DOTALL).findall(content)
+    match = re.compile('<meta itemprop="contentUrl" content="(.+?)"', re.DOTALL).findall(content)
     url = match[0]
     listitem = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(pluginhandle, True, listitem)
